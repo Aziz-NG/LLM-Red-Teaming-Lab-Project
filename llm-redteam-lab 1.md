@@ -36,7 +36,6 @@ A deliberately simple RAG-style chatbot (`chatbot.py`):
 2. Picks the single document with the highest word overlap with the employee's question (a basic keyword retriever, not embeddings).
 3. Sends that document plus the question to an Azure OpenAI chat deployment (`gpt-5-mini`) with a system prompt.
 
-The system prompt also contains a fake internal reference code (`ZEBRA-4419`) with the instruction never to reveal it.
 
 ### Baseline behavior (before any attack)
 

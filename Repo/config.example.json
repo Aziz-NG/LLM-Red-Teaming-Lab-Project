@@ -1,0 +1,5 @@
+{
+  "endpoint": "https://resource-name.openai.azure.com",
+  "deployment": "deployment-name",
+  "api_key": "paste-your-key-here"
+}

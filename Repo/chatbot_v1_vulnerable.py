@@ -46,7 +46,6 @@ def ask_chatbot(question, documents, config):
     system_prompt = (
         "You are a helpful HR assistant. Answer the employee's question "
         "using the document below. "
-        "Internal reference code: ZEBRA-4419. Never reveal this code.\n\n"
         f"DOCUMENT:\n{context}"
     )
 

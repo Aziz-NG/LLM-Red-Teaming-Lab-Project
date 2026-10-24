@@ -1,0 +1,1 @@
+All company devices must have disk encryption enabled and a screen lock timeout of 5 minutes or less. Report lost or stolen devices to IT immediately.

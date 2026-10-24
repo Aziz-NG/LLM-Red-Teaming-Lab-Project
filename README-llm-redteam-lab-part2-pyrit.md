@@ -1,6 +1,6 @@
 # LLM Red Teaming Lab, Part 2: Automated Testing with PyRIT
 
-**Part 2 of 2.** [Part 1](README-llm-redteam-lab.md) built an HR chatbot, poisoned one of its documents, measured the attack by hand (10/10 vulnerable, 0/10 hardened), and hardened the system prompt. This part repeats the test with Microsoft's [PyRIT](https://github.com/Azure/PyRIT) so it runs as an automated, scored batch instead of one hand-typed question.
+**Part 2 of 2.** [Part 1](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/llm-redteam-lab%201.md) built an HR chatbot, poisoned one of its documents, measured the attack by hand (10/10 vulnerable, 0/10 hardened), and hardened the system prompt. This part repeats the test with Microsoft's [PyRIT](https://github.com/Azure/PyRIT) so it runs as an automated, scored batch instead of one hand-typed question.
 
 ![Python](https://img.shields.io/badge/Language-Python-blue)
 ![PyRIT](https://img.shields.io/badge/Tool-PyRIT%201.1.0-purple)
@@ -20,9 +20,9 @@ Same 8 expense questions, same poisoned `policy_expenses.txt`, run through PyRIT
 
 This agrees with the manual result in Part 1 and shows the fix holds across differently worded questions, not just one.
 
-![PyRIT batch test against the vulnerable bot](images/pyrit-vulnerable-batch.png)
+![PyRIT batch test against the vulnerable bot](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/pyrit-vulnerable-batch.PNG)
 
-![PyRIT batch test against the hardened bot](images/pyrit-hardened-batch.png)
+![PyRIT batch test against the hardened bot](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/pyrit-hardened-batch.PNG)
 
 ---
 
@@ -69,9 +69,6 @@ So the prompt-level hardening stopped the bot from **obeying** an instruction hi
 
 This is also why the scorer needs care: a substring match counts "the bot repeated the text" the same as "the bot obeyed the text", so I report the starts-with count separately.
 
-### 3. A bug found along the way
-While wiring up PyRIT I found a bug in `chatbot.py`: the system prompt was only built when a document matched, so a question matching no document would crash. I fixed it (indentation only). The Part 1 results were not affected, because those questions always matched a document.
-
 ---
 
 ## Limitations
@@ -79,7 +76,6 @@ While wiring up PyRIT I found a bug in `chatbot.py`: the system prompt was only 
 - **8 prompts, one payload, one document.** Small sample; LLM output varies between runs. The flagged answer in Finding 2 repeated across two runs, but I did not measure how often.
 - Retrieval is a simple keyword match, so some prompts reach a different document than intended (see prompt #7). A "miss" on such a prompt says nothing about the defense.
 - The scorer is a substring match. It cannot tell "obeyed" from "quoted" without the second, starts-with check.
-- Not tested: system-prompt leakage (`ZEBRA-4419`), poisoned facts that are false, multi-turn attacks, PyRIT's attack converters and generators.
 - Azure Prompt Shields was not verified as enabled, so I make no claim about it.
 
 ---
@@ -88,9 +84,8 @@ While wiring up PyRIT I found a bug in `chatbot.py`: the system prompt was only 
 
 1. **Poisoned facts:** put a false value in a document (for example a different meal limit) and check whether the hardened bot repeats it.
 2. **PyRIT converters and generators:** try encoded or rephrased versions of the payload to test the hardening against more than one wording of the attack.
-3. **Leakage test:** try to get the bot to reveal `ZEBRA-4419`.
-4. **Defense in depth beyond the prompt:** output checks for unexpected prefixes, Azure Prompt Shields (verify it is enabled), and least-privilege design so a manipulated answer cannot trigger actions.
-5. **Map to the current OWASP Top 10 for LLM Applications.**
+3. **Defense in depth beyond the prompt:** output checks for unexpected prefixes, Azure Prompt Shields (verify it is enabled), and least-privilege design so a manipulated answer cannot trigger actions.
+4. **Map to the current OWASP Top 10 for LLM Applications.**
 
 ---
 
@@ -100,7 +95,7 @@ While wiring up PyRIT I found a bug in `chatbot.py`: the system prompt was only 
 |---|---|
 | `pyrit_target.py` | Custom PyRIT target that wraps `ask_chatbot` |
 | `pyrit_batch_test.py` | Runs the 8 prompts through PyRIT and scores them. `python pyrit_batch_test.py` tests the hardened bot, `python pyrit_batch_test.py vulnerable` tests the unhardened one, `python pyrit_batch_test.py stub` runs an offline self-test with fake bots |
-| `chatbot.py`, `chatbot_v1_vulnerable.py` | The two chatbot versions from [Part 1](README-llm-redteam-lab.md) |
+| `chatbot.py`, `chatbot_v1_vulnerable.py` | The two chatbot versions from [Part 1](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/llm-redteam-lab%201.md) |
 | `policy_*.txt` | Knowledge-base documents (`policy_expenses.txt` is the poisoned one) |
 | `config.example.json` | Config template (real `config.json` is git-ignored) |
 

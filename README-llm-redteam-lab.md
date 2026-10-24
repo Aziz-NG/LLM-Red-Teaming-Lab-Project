@@ -128,12 +128,12 @@ system_prompt = (
 
 | File | Purpose |
 |---|---|
-| `chatbot.py` | Hardened chatbot |
-| `chatbot_v1_vulnerable.py` | Original, pre-hardening version |
-| `policy_pto.txt`, `policy_remote_work.txt`, `policy_security.txt` | Clean knowledge-base documents |
-| `policy_expenses.txt` | Poisoned document |
-| `test_approved.py` | Counts answers starting with `APPROVED:` over 10 runs |
-| `config.example.json` | Config template (real `config.json` is git-ignored) |
+| [chatbot.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/chatbot.py) | Hardened chatbot |
+| [chatbot_v1_vulnerable.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/chatbot_v1_vulnerable.py) | Original, pre-hardening version |
+| [policy_pto.txt](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/policy_pto.txt), [policy_remote_work.txt](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/policy_remote_work.txt), [policy_security.txt](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/policy_security.txt) | Clean knowledge-base documents |
+| [policy_expenses.txt](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/policy_expenses.txt) | Poisoned document |
+| [test_approved.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/test_approved.py) | Counts answers starting with `APPROVED:` over 10 runs |
+| [config.example.json](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/config.example.json) | Config template (real `config.json` is git-ignored) |
 
 ## Setup
 

@@ -20,7 +20,12 @@ Same 8 expense questions, same poisoned `policy_expenses.txt`, run through PyRIT
 
 This agrees with the manual result in Part 1 and shows the fix holds across differently worded questions, not just one.
 
+`PyRIT batch test against the vulnerable bot`
+
 ![PyRIT batch test against the vulnerable bot](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/pyrit-vulnerable-batch.PNG)
+
+
+`PyRIT batch test against the hardened bot`
 
 ![PyRIT batch test against the hardened bot](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/pyrit-hardened-batch.PNG)
 
@@ -93,11 +98,11 @@ This is also why the scorer needs care: a substring match counts "the bot repeat
 
 | File | Purpose |
 |---|---|
-| `pyrit_target.py` | Custom PyRIT target that wraps `ask_chatbot` |
-| `pyrit_batch_test.py` | Runs the 8 prompts through PyRIT and scores them. `python pyrit_batch_test.py` tests the hardened bot, `python pyrit_batch_test.py vulnerable` tests the unhardened one, `python pyrit_batch_test.py stub` runs an offline self-test with fake bots |
-| `chatbot.py`, `chatbot_v1_vulnerable.py` | The two chatbot versions from [Part 1](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/llm-redteam-lab%201.md) |
-| `policy_*.txt` | Knowledge-base documents (`policy_expenses.txt` is the poisoned one) |
-| `config.example.json` | Config template (real `config.json` is git-ignored) |
+| [pyrit_target.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/pyrit_target.py) | Custom PyRIT target that wraps `ask_chatbot` |
+| [pyrit_batch_test.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/pyrit_batch_test.py) | Runs the 8 prompts through PyRIT and scores them. `python pyrit_batch_test.py` tests the hardened bot, `python pyrit_batch_test.py vulnerable` tests the unhardened one, `python pyrit_batch_test.py stub` runs an offline self-test with fake bots |
+| [chatbot.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/chatbot.py), [chatbot_v1_vulnerable.py](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/chatbot_v1_vulnerable.py) | The two chatbot versions from [Part 1](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/llm-redteam-lab%201.md) |
+| `policy_*.txt` | Knowledge-base documents ([policy_expenses.txt](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/policy_expenses.txt) is the poisoned one) |
+| [config.example.json](https://github.com/Aziz-NG/LLM-Red-Teaming-Lab-Project/blob/main/Repo/config.example.json) | Config template (real `config.json` is git-ignored) |
 
 ## Setup
 
